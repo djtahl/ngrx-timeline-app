@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "hour": "09:00",
+    "title": "Arrival at train station",
+    "body": "User arrives by Uber, pays using crypto wallet."
+  },
+  {
+    "id": 2,
+    "hour": "09:05",
+    "title": "Snack time",
+    "body": "Go to snack kiosk, purchase bakery products and a juice, pay by contact-less credit card."
+  },
+  {
+    "id": 3,
+    "hour": "09:20",
+    "title": "Purchase train ticket",
+    "body": "Connect to free wifi from station, use fast-track train ticket service to buy, pay via wallet."
+  },
+  {
+    "id": 4,
+    "hour": "09:45",
+    "title": "Board train",
+    "body": ""
+  },
+  {
+    "id": 5,
+    "hour": "09:50",
+    "title": "Journey (2h)",
+    "body": "Connect to on-train wifi, get realtime push notifications announcing delays."
+  },
+  {
+    "id": 6,
+    "hour": "12:10",
+    "title": "Arrival with delay",
+    "body": ""
+  }
+]

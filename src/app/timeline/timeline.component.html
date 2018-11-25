@@ -1,2 +1,4 @@
 <h1>My timeline</h1>
-<tml-timeline-item></tml-timeline-item>
+<div class="tml-items" *ngFor="let item of timelineItems$ | async">
+  <tml-timeline-item [timelineItem]="item"></tml-timeline-item>
+</div>
