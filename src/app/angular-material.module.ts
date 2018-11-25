@@ -6,6 +6,7 @@ import {
   MatIconModule,
   MatInputModule,
   MatSelectModule,
+  MatToolbarModule,
   MAT_LABEL_GLOBAL_OPTIONS,
 } from '@angular/material';
 
@@ -16,6 +17,7 @@ import {
     MatIconModule,
     MatInputModule,
     MatSelectModule,
+    MatToolbarModule,
   ],
   exports: [
     MatButtonModule,
@@ -23,6 +25,7 @@ import {
     MatIconModule,
     MatInputModule,
     MatSelectModule,
+    MatToolbarModule,
   ],
   providers: [
     { provide: MAT_LABEL_GLOBAL_OPTIONS, useValue: { float: 'never' } }

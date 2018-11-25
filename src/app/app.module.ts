@@ -1,23 +1,27 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule, appRoutingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AngularMaterialModule } from './angular-material.module';
+import { TimelineModule } from './timeline/timeline.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    appRoutingComponents,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+
+    TimelineModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
