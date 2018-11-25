@@ -1,0 +1,15 @@
+Notes
+
+- how to switch between readonly and edit state for each event item ?
+-- need a reusable event-item form component for Create and Edit actions
+--- Create : will add an instance of the form with empty fields
+--- Edit : will add an instance of the form getting the selected item as @Input()
+-- need a reusable readonly component for view mode / does material readonly state on form-fields would allow to reuse the same event-item form component ?
+
+- Time : 24h format
+-- get the user local ?
+
+- the undo/redo feature can be done using Redux pattern -> NgRx for Angular
+-- interesting lib for a quick use : https://github.com/JannicBeck/ngrx-undoable
+-- article on ngrx-effect miss-use : https://medium.com/@m3po22/stop-using-ngrx-effects-for-that-a6ccfe186399
+-- Redux - implementing undo history : https://redux.js.org/recipes/implementingundohistory
