@@ -90,6 +90,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .tml-no-label .mat-form-field-infix {
   border-top-width: 0px;
 }
+.tml-no-hint .mat-form-field-wrapper {
+  padding-bottom: 0px;
+}
 
 /* Import custom app mixins */
 @import 'app/timeline/timeline-item/timeline-item.component';

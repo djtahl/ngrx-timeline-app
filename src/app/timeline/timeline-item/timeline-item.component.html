@@ -16,7 +16,7 @@
 <ng-template #editForm>
   <form class="tml-item-edit" fxLayout="row" fxLayoutAlign="start start" [formGroup]="timelineForm" (ngSubmit)="onSubmit()">
     <!-- TODO: add time picker -->
-		<div>{{timelineItem.hour}}</div>
+		<div class="tml-item-hour">{{timelineItem.hour}}</div>
 		<div class="tml-item-dot-line" fxFlexAlign="stretch"></div>
 		<div class="mb-4" fxFlex fxLayout="column" fxLayoutAlign="start">
 			<mat-form-field class="tml-item-title tml-no-label">
@@ -25,7 +25,8 @@
           A name is <strong>required</strong>
         </mat-error>
       </mat-form-field>
-      <mat-form-field class="tml-item-description tml-no-label">
+      <!-- TODO: Question - Shouldn't we use the same form-field appearance for both title and description ? -->
+      <mat-form-field appearance="outline" class="tml-item-description tml-no-label tml-no-hint">
         <textarea matInput placeholder="Description" formControlName="description"></textarea>
       </mat-form-field>
       <div class="tml-item-actions" fxLayout="row" fxLayoutAlign="end">
