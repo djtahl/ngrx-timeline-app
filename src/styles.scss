@@ -23,7 +23,64 @@ $timeline-app-theme: mat-light-theme($timeline-app-primary, $timeline-app-accent
 // that you are using.
 @include angular-material-theme($timeline-app-theme);
 
-/* You can add global styles to this file, and also import other style files */
+/* Import some Bootstrap utilities */
+// TODO: Adapt bootstrap utilities with flex-layout and material definitions
+$font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-bold: 700;
+
+$black: #000;
+$white: #fff;
+$body-color: $white;
+$theme-colors: (
+  "primary":    mat-color($mat-grey, 700),
+  "secondary":  mat-color($mat-teal, 400)
+);
+
+$text-muted: mat-color($mat-grey, 800);
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+);
+
+$spacer: 1rem;
+$spacers: (
+  0: 0,
+  1: ($spacer * .25),
+  2: ($spacer * .5),
+  3: $spacer,
+  4: ($spacer * 1.5),
+  5: ($spacer * 3)
+);
+
+$sizes: (
+  25: 25%,
+  50: 50%,
+  75: 75%,
+  100: 100%,
+  auto: auto
+);
+
+@import '~bootstrap/scss/mixins/breakpoints';
+@import '~bootstrap/scss/mixins/hover';
+@import '~bootstrap/scss/mixins/text-emphasis';
+@import '~bootstrap/scss/mixins/text-hide';
+@import '~bootstrap/scss/mixins/text-truncate';
+@import '~bootstrap/scss/mixins/visibility';
+@import '~bootstrap/scss/utilities/align';
+@import '~bootstrap/scss/utilities/display';
+@import '~bootstrap/scss/utilities/flex';
+@import '~bootstrap/scss/utilities/sizing';
+@import '~bootstrap/scss/utilities/spacing';
+@import '~bootstrap/scss/utilities/text';
+@import '~bootstrap/scss/utilities/visibility';
+
+/* Global styles */
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
