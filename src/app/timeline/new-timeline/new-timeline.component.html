@@ -1,0 +1,20 @@
+<form class="tml-item-edit" fxLayout="row" fxLayoutAlign="start start" [formGroup]="addTimelineForm" (ngSubmit)="saveItem()">
+  <!-- TODO: add time picker -->
+  <!-- <div class="tml-item-hour">{{item.hour}}</div> -->
+  <div class="tml-item-dot-line" fxFlexAlign="stretch"></div>
+  <div class="mb-4" fxFlex fxLayout="column" fxLayoutAlign="start">
+    <mat-form-field class="tml-item-title tml-no-label">
+      <input matInput placeholder="Name" formControlName="title" required>
+      <mat-error *ngIf="addTimelineForm.get('title').hasError('required')">
+        A name is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <!-- TODO: Question - Shouldn't we use the same form-field appearance for both title and description ? -->
+    <mat-form-field appearance="outline" class="tml-item-text tml-no-label tml-no-hint">
+      <textarea matInput placeholder="Description" formControlName="text"></textarea>
+    </mat-form-field>
+    <div class="tml-item-actions" fxLayout="row" fxLayoutAlign="end">
+      <button mat-button color="accent" type="submit" [disabled]="!addTimelineForm.valid">SAVE</button>
+    </div>
+  </div>
+</form>

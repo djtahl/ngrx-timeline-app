@@ -1,37 +1,39 @@
-<div *ngIf="!isEditable; else editForm;">
-	<div class="tml-item-view" fxLayout="row" fxLayoutAlign="start start">
-		<div class="tml-item-hour">{{timelineItem.hour}}</div>
-		<div class="tml-item-dot-line" fxFlexAlign="stretch"></div>
+<div *ngIf="!editing; else editForm;">
+  <div class="tml-item-view" fxLayout="row" fxLayoutAlign="start start">
+    <!-- <div class="tml-item-hour">{{item.hour}}</div> -->
+    <div class="tml-item-dot-line" fxFlexAlign="stretch"></div>
     <div class="mb-4" fxFlex fxLayout="column" fxLayoutAlign="start">
-      <div class="tml-item-title mb-2">{{timelineItem.title}}</div>
-      <div class="text-primary">{{timelineItem.body}}</div>
+      <div class="tml-item-title mb-2">{{item.title}}</div>
+      <div class="text-primary">{{item.text}}</div>
       <div class="tml-item-actions" fxLayout="row" fxLayoutAlign="end">
-        <button mat-icon-button color="primary" (click)="editItem(timelineItem)">
+        <button mat-icon-button color="primary" (click)="activeEditMode()">
           <mat-icon aria-label="Edit button">edit</mat-icon>
+        </button>
+        <button mat-icon-button color="primary" (click)="deleteItem()">
+          <mat-icon>delete</mat-icon>
         </button>
       </div>
     </div>
   </div>
 </div>
 <ng-template #editForm>
-  <form class="tml-item-edit" fxLayout="row" fxLayoutAlign="start start" [formGroup]="timelineForm" (ngSubmit)="onSubmit()">
+  <form class="tml-item-edit" fxLayout="row" fxLayoutAlign="start start" [formGroup]="timelineForm" (ngSubmit)="updateText()">
     <!-- TODO: add time picker -->
-		<div class="tml-item-hour">{{timelineItem.hour}}</div>
-		<div class="tml-item-dot-line" fxFlexAlign="stretch"></div>
-		<div class="mb-4" fxFlex fxLayout="column" fxLayoutAlign="start">
-			<mat-form-field class="tml-item-title tml-no-label">
-				<input matInput placeholder="Name" formControlName="name" required>
-        <mat-error *ngIf="timelineForm.get('name').hasError('required')">
+    <!-- <div class="tml-item-hour">{{item.hour}}</div> -->
+    <div class="tml-item-dot-line" fxFlexAlign="stretch"></div>
+    <div class="mb-4" fxFlex fxLayout="column" fxLayoutAlign="start">
+      <mat-form-field class="tml-item-title tml-no-label">
+        <input matInput placeholder="Name" formControlName="title" required>
+        <mat-error *ngIf="timelineForm.get('title').hasError('required')">
           A name is <strong>required</strong>
         </mat-error>
       </mat-form-field>
       <!-- TODO: Question - Shouldn't we use the same form-field appearance for both title and description ? -->
-      <mat-form-field appearance="outline" class="tml-item-description tml-no-label tml-no-hint">
-        <textarea matInput placeholder="Description" formControlName="description"></textarea>
+      <mat-form-field appearance="outline" class="tml-item-text tml-no-label tml-no-hint">
+        <textarea matInput placeholder="Description" formControlName="text"></textarea>
       </mat-form-field>
       <div class="tml-item-actions" fxLayout="row" fxLayoutAlign="end">
-        <button *ngIf="!timelineItem" mat-button color="accent" type="submit" [disabled]="!timelineForm.valid">Submit</button>
-        <button *ngIf="timelineItem" mat-button color="accent" type="submit" [disabled]="!timelineForm.valid">SAVE</button>
+        <button mat-button color="accent" type="submit" [disabled]="!timelineForm.valid">SAVE</button>
       </div>
     </div>
   </form>

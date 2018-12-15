@@ -1,44 +1,53 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormControl, Validators, FormBuilder } from '@angular/forms';
+import { Store } from '@ngrx/store';
+
+import { AppState } from '../../../redux/app.reducer';
+import { Item } from '../../../redux/item/item.model';
+import * as ItemActions from '../../../redux/item/item.actions';
 
 @Component({
   selector: 'tml-timeline-item',
-  templateUrl: './timeline-item.component.html',
-  styleUrls: ['./timeline-item.component.scss']
+  templateUrl: './timeline-item.component.html'
 })
 export class TimelineItemComponent implements OnInit {
-  @Input() timelineItem;
-  isEditable = false;
-  action = null;
 
-  timelineForm = this.fb.group({
-    name: ['', Validators.required],
-    description: ['']
-  });
+  @Input() item: Item;
+  editing: boolean;
 
-  constructor(private fb: FormBuilder) { }
+  timelineForm;
 
-  ngOnInit() { }
+  constructor(
+    private store: Store<AppState>,
+    private fb: FormBuilder
+  ) { }
 
-  onSubmit() {
-    if (this.action === 'update') {
-      this.isEditable = !this.isEditable;
-      console.log('update');
-      console.warn(this.timelineForm.value);
-      /* this.employeeService.updateEmployee(this.formData);
-      this.msgs.push({ severity: 'success', summary: 'Thank You', detail: 'User has been updated successfully.' }); */
-    } else {
-      console.log('create');
-      /* this.employeeService.insertEmployee(this.formData);
-      this.msgs.push({ severity: 'success', summary: 'Thank You', detail: 'User has been registered successfully.' });*/
+  ngOnInit() {
+    this.timelineForm = this.fb.group({
+      title: [ this.item.title, Validators.required ],
+      text: [ this.item.text ]
+    });
+  }
+
+  updateText() {
+    if (this.timelineForm.valid && this.editing) {
+      const id = this.item.id;
+      const newTitle: string = this.timelineForm.value.title;
+      const newText: string = this.timelineForm.value.text;
+      const action = new ItemActions.UpdateAction(id, newTitle.trim(), newText);
+      this.store.dispatch(action);
+      this.editing = false;
     }
-    // TODO: update ngrx store here through action to the reducer
   }
 
-  editItem(item) {
-    this.isEditable = !this.isEditable;
-    this.action = 'update';
-    this.timelineForm.get('name').setValue(item.title);
-    this.timelineForm.get('description').setValue(item.body);
+  activeEditMode() {
+    this.editing = true;
   }
+
+  deleteItem() {
+    const id = this.item.id;
+    const action = new ItemActions.DeleteItemAction(id);
+    this.store.dispatch(action);
+  }
+
 }

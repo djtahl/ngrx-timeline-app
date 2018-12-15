@@ -83,8 +83,8 @@ $sizes: (
 @import '~bootstrap/scss/utilities/visibility';
 
 /* Global styles */
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body { height: 100%; margin: 0; padding: 0; }
+body { font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 /* Material styles overrides */
 .tml-no-label .mat-form-field-infix {
@@ -95,5 +95,5 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 /* Import custom app mixins */
-@import 'app/timeline/timeline-item/timeline-item.component';
+@import 'app/timeline/_timeline-item/timeline-item.component';
 @include tml-item($timeline-app-theme, $config);
